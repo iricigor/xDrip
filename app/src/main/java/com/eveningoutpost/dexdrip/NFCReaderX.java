@@ -480,7 +480,7 @@ public class NFCReaderX {
             }
         }
 
-        void LogLibre2StartStreeming(ENABLE_STREAMING success, String extraData) {
+        void LogLibre2StartStreaming(ENABLE_STREAMING success, String extraData) {
             switch(success) {
                 case SUCCESS:
                     UserError.Log.ueh("Libre 2", "bluetooth connection with sensor enabled, you should be able to receive BG data using bluetooth");
@@ -500,7 +500,7 @@ public class NFCReaderX {
             PersistentStore.setString("Bubblebattery", "0");
             if (!enableBluetoothAllowed(context)) {
                 Log.e(TAG, "Sensor is libre 2, enabeling BT not allowed");
-                LogLibre2StartStreeming(ENABLE_STREAMING.FAILED, "Sensor is Libre 2 but enabling BT not allowed in settings");
+                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Sensor is Libre 2 but enabling BT not allowed in settings");
                 return;
             }
             Log.e(TAG, "Sensor is libre 2, enabeling BT");
@@ -512,7 +512,7 @@ public class NFCReaderX {
             Pair<byte[], String> unlockData = LibreOOPAlgorithm.nfcSendgetBluetoothEnablePayload();
             if (unlockData == null) {
                 Log.e(TAG, "unlockData is null, not enabeling streaming");
-                LogLibre2StartStreeming(ENABLE_STREAMING.FAILED, "Failure in communicating with OOP2. Is OOP2 istalled");
+                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Failure in communicating with OOP2. Is OOP2 istalled");
                 return;
             }
             Libre2SensorData.setLibre2SensorData(patchUid, patchInfo, 42, 1, unlockData.second);
@@ -539,7 +539,7 @@ public class NFCReaderX {
                 } catch (IOException e) {
                     if ((System.currentTimeMillis() > time_patch + 2000)) {
                         Log.e(TAG, "enable streaming command read timeout");
-                        LogLibre2StartStreeming(ENABLE_STREAMING.FAILED, "Enable streaming command read timeout");
+                        LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Enable streaming command read timeout");
                         JoH.static_toast_short(gs(R.string.nfc_read_timeout));
                         vibrate(context, 3);
                         return;
@@ -554,10 +554,10 @@ public class NFCReaderX {
 
                 ActiveBluetoothDevice.setDevice(LibreOOPAlgorithm.getLibreDeviceName() + SensorSN, JoH.bytesToHexMacFormat(res));
                 CollectionServiceStarter.restartCollectionServiceBackground();
-                LogLibre2StartStreeming(ENABLE_STREAMING.SUCCESS, null);
+                LogLibre2StartStreaming(ENABLE_STREAMING.SUCCESS, null);
             } else {
                 Log.e(TAG, "enable streaming returned bad data. BT will not work." + HexDump.dumpHexString(res));
-                LogLibre2StartStreeming(ENABLE_STREAMING.FAILED, "Enable streaming command returned bad data");
+                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Enable streaming command returned bad data");
             }
         }
 
