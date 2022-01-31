@@ -500,7 +500,7 @@ public class NFCReaderX {
             PersistentStore.setString("Bubblebattery", "0");
             if (!enableBluetoothAllowed(context)) {
                 Log.e(TAG, "Sensor is libre 2, enabeling BT not allowed");
-                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Sensor is Libre 2 but enabling BT not allowed in settings");
+                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Sensor is Libre 2 but enabling BT is not allowed by the settings");
                 return;
             }
             Log.e(TAG, "Sensor is libre 2, enabeling BT");
