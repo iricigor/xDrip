@@ -483,10 +483,10 @@ public class NFCReaderX {
         void LogLibre2StartStreaming(ENABLE_STREAMING success, String extraData) {
             switch(success) {
                 case SUCCESS:
-                    UserError.Log.ueh("Libre 2", "bluetooth connection with sensor enabled, you should be able to receive BG data using bluetooth");
+                    UserError.Log.ueh("Libre 2", "Bluetooth connection with sensor enabled, you should be able to receive BG data using Bluetooth");
                     break;
                 case FAILED:
-                    UserError.Log.ueh("Libre 2", "bluetooth connection with sensor failed." +
+                    UserError.Log.ueh("Libre 2", "Bluetooth connection with sensor failed." +
                             " You wont get any readings. Try scanning again to fix this. (Extra data: " +
                             extraData +" )");
                     break;
