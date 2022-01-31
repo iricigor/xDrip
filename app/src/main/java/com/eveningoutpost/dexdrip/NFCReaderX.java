@@ -487,7 +487,7 @@ public class NFCReaderX {
                     break;
                 case FAILED:
                     UserError.Log.ueh("Libre 2", "bluetooth connection with sensor failed." +
-                            " You will not have readings. Try scanning again to fix this. (Extra data: " +
+                            " You wont get any readings. Try scanning again to fix this. (Extra data: " +
                             extraData +" )");
                     break;
             }
