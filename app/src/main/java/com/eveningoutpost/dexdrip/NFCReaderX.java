@@ -512,7 +512,7 @@ public class NFCReaderX {
             Pair<byte[], String> unlockData = LibreOOPAlgorithm.nfcSendgetBluetoothEnablePayload();
             if (unlockData == null) {
                 Log.e(TAG, "unlockData is null, not enabeling streaming");
-                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Failure in communicating with OOP2. Is OOP2 istalled");
+                LogLibre2StartStreaming(ENABLE_STREAMING.FAILED, "Failure in communicating with OOP2. Is OOP2 installed?");
                 return;
             }
             Libre2SensorData.setLibre2SensorData(patchUid, patchInfo, 42, 1, unlockData.second);
